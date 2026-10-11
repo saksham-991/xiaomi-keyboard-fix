@@ -6,7 +6,7 @@ Restores typing at boot, fixes landscape arrow key rotation, enables the Caps Lo
 
 ## Quick Install — Magisk / KernelSU
 
-1. Download **Xiaomi-Pad7-Keyboard-Fix-All-in-One.zip** from the [latest release](https://github.com/JohnnyFFM/xiaomi-keyboard-fix/releases/latest).
+1. Download **Xiaomi-Pad7-Keyboard-Fix-All-in-One.zip** from the [latest release](https://github.com/saksham-991/xiaomi-keyboard-fix/releases/tag/Magisk-Module).
 2. Install the ZIP through Magisk or KernelSU.
 3. Reboot your tablet.
 

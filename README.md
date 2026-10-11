@@ -1,6 +1,3 @@
-# Xiaomi Pad 7 Pro keyboard fix (custom ROMs) - v3
-
-
 # Xiaomi Pad 7 Keyboard Fix Magisk Module (crDroid / AOSP)
 
 Looking for a working **Xiaomi Pad 7 / 7 Pro keyboard fix** for custom ROMs? 

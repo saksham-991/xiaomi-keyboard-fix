@@ -124,5 +124,15 @@ su -c 'rm /data/adb/service.d/kbdauth.sh /data/adb/service.d/xiaomi_kbd_service.
 * IDC precedence: `/system/usr/idc` beats `/data/system/devices/idc`, so this ships the IDC only in `/data` and uses **no** Magisk module (which would otherwise mount a competing `/system` copy).
 * `toucheventcheck`: Xiaomi's `/odm/bin/toucheventcheck` is a MiSight *touch-telemetry* daemon (not the touch driver - that's the separate `touchfeature-service`). It opens every input node, and when the keyboard's node is deleted (sleep/wake, detach, or our own HID rebind) its dump thread degenerates into a pure-userspace busy-loop that pegs one core forever and never recovers. Since it's a `oneshot` init service, `kbd_no_toucheventcheck.sh` just `stop`s it at boot and init never respawns it. Alternative considered and rejected: restart it on every rebind - that keeps it alive (and it only re-spins on the next sleep/wake), and it's merely telemetry, so disabling outright is cleaner. Logs to `/data/adb/kbd/notec.log`.
 
+## Related: touchpad feels laggy (30 Hz)
+
+Not fixed by this module (it's a display setting, not keyboard firmware) but
+the touchpad lives on the same keyboard folio, so noting it here: the folio
+**touchpad samples at ~30 Hz** while the panel reports 144 Hz, which makes the
+pointer feel choppy. **Workaround (user-confirmed):** Developer Options ->
+**Disable HW overlays** (forces GPU composition) fixes it completely. It's a
+per-boot toggle on a custom ROM; the proper fix belongs at the ROM/display-HAL
+level rather than in this module.
+
 ## License
 MIT (see `LICENSE`). Reverse-engineered from the device's own components for interoperability/repair; no Xiaomi binaries or keys included.

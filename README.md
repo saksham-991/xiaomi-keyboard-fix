@@ -47,7 +47,7 @@ orientation, working **Caps Lock LED**, and a **keyboard-backlight** shortcut.
 
 > Codename `muyu` (Pad 7 Pro) / `uke` (Pad 7). **Root required** (Magisk or
 > KernelSU) - but **no Magisk module required**(still provided): it's all `/data/adb` boot scripts that
-> the root manager runs at startup. v2 (auth only) is on the `v2-backup` branch.
+> the root manager runs at startup. v2 (auth only) is on the `v2-backup` branch on JohnnyFFM/xiaomi-keyboard-fix repo.
 
 
 ## Components (all run as root via Magisk's boot scripts)

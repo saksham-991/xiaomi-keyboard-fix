@@ -1,7 +1,16 @@
 # Xiaomi Pad 7 Pro keyboard fix (custom ROMs) - v3
 
 
-Ready to Use Magisk Module is provided in the releases section, though the steps to do everything manually is given below.
+# Xiaomi Pad 7 Keyboard Fix Magisk Module (crDroid / AOSP)
+
+Looking for a working **Xiaomi Pad 7 / 7 Pro keyboard fix** for custom ROMs? 
+This repository hosts the official pre-packaged, ready-to-use **Magisk Module** 
+to fix the keyboard layout instantly on `uke` and `muyu` devices running crDroid.
+
+## Download Pre-built Magisk Module Zip
+Go directly to the **Releases** section of this repository to download the 
+all-in-one flashable zip file. No terminal commands required.
+
 
 Make the **Xiaomi Pad 7 / 7 Pro** magnetic keyboard fully work on **crDroid /
 AOSP custom ROMs**: no dropouts, it actually types at boot, correct arrow-key

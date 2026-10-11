@@ -8,6 +8,38 @@ to fix the keyboard layout instantly on `uke` and `muyu` devices running crDroid
 Go directly to the **Releases** section of this repository to download the 
 all-in-one flashable zip file. No terminal commands required.
 
+# Xiaomi Pad 7 Keyboard Fix Magisk Module (crDroid / AOSP)
+
+Looking for an instant, working **Xiaomi Pad 7 / 7 Pro keyboard fix** for AOSP or crDroid custom ROMs? This repository provides the pre-packaged, ready-to-use flashable **All-in-One Magisk Module** that restores full hardware keyboard functionality on `uke` and `muyu` devices without messing with complex terminal environments.
+
+---
+
+## 🚀 Quick Install (Recommended)
+
+If you just want the keyboard to work without running manual scripts, download the automated installer:
+
+1. Go straight to the [**Releases**](../../releases/latest) section of this repository.
+2. Download the pre-packaged `Xiaomi-Pad7-Keyboard-Fix-All-in-One.zip`.
+3. Flash the zip file directly inside **Magisk** or **KernelSU**, then reboot your tablet.
+
+*Note: For power users who prefer clean deployment without a Magisk framework module overhead, the manual command-line execution pipeline is detailed below.*
+
+---
+
+## 🛠️ What This Fix Solves
+
+| Problem on a custom ROM | Module Fix Component |
+| --- | --- |
+| Keyboard "connected" but **types nothing** at boot | `xiaomi_kbd_service.sh` - Automates the initial HID rebind loop |
+| Keyboard **stops working after a few minutes** | `kbd_auth.sh` + `tokenhelper` - Passes real MiAuth tokens on-device via TrustZone |
+| **Arrow keys rotated** 90 degrees in landscape | Dynamic IDC re-generation sets `device.internal = 0` early |
+| **Caps Lock LED** stays dead | `kbd_leds.sh` - Real-time state watcher driven by key events |
+| **Keyboard backlight** cannot be controlled | `kbd_leds.sh` - Custom hardware key combination mapping |
+| **Tablet runs warm** / Core stuck at 100% CPU | `kbd_no_toucheventcheck.sh` - Shuts down buggy vendor telemetry loops |
+
+> **Privacy & Security Notice:** No keys are logged, extracted, or transmitted online. The authentication signature is calculated locally on your tablet by the stock signed firmware `devauth` trustlet layout.
+
+---
 
 Make the **Xiaomi Pad 7 / 7 Pro** magnetic keyboard fully work on **crDroid /
 AOSP custom ROMs**: no dropouts, it actually types at boot, correct arrow-key
@@ -17,19 +49,6 @@ orientation, working **Caps Lock LED**, and a **keyboard-backlight** shortcut.
 > KernelSU) - but **no Magisk module required**(still provided): it's all `/data/adb` boot scripts that
 > the root manager runs at startup. v2 (auth only) is on the `v2-backup` branch.
 
-## What it fixes
-
-| Problem on a custom ROM | Fix |
-| --- | --- |
-| Keyboard "connected" but **types nothing** at boot | `xiaomi_kbd_service.sh` - rebinds the HID so Android enables the input |
-| Keyboard **stops after a while** (drops keys) | `kbd_auth.sh` + `midevauthd` - completes Xiaomi MiAuth with the device's own TrustZone key |
-| **Arrow keys rotated** 90 degrees | IDC `device.internal = 0` (via `post-fs-data`) |
-| **Caps Lock LED** dead | `kbd_leds.sh` - driven from the Caps key |
-| **Keyboard backlight** dead | `kbd_leds.sh` - **Ctrl+Alt+4 brighter / Ctrl+Alt+3 dimmer** (0 = off) |
-| **One CPU core stuck at 100%** / tablet runs warm | `kbd_no_toucheventcheck.sh` - disables Xiaomi's `toucheventcheck` telemetry daemon, which busy-loops when the keyboard's input node is removed |
-
-Nothing contacts Xiaomi servers and no keys are extracted: the token is computed
-on-device by the signed `devauth` TrustZone trustlet already in your firmware.
 
 ## Components (all run as root via Magisk's boot scripts)
 
@@ -55,7 +74,7 @@ on-device by the signed `devauth` TrustZone trustlet already in your firmware.
 * Root (Magisk or KernelSU), `adb`.
 * Three proprietary files from a stock HyperOS ROM for your codename (below).
 
-## Install
+## Install (Manual Method)
 
 ### 1. Get `tokenhelper`
 From the [latest Release](../../releases/latest) (static arm64, no runtime deps), or build it (see *Building*).

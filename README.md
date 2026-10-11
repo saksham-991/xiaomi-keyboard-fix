@@ -21,6 +21,8 @@ Restores typing at boot, fixes landscape arrow key rotation, enables the Caps Lo
 | Keyboard backlight cannot be adjusted | `kbd_leds.sh` adds configurable brightness shortcuts. |
 | Tablet overheats or one CPU core stays at 100% | `kbd_no_toucheventcheck.sh` disables the broken MiSight touch telemetry loop. |
 
+> The 30hz touchpad issue (choppy pointer) is also solved in the magisk module as it is a simple toggle "Disable HW Overlays" IN developer options, I added it here because the touchpad is on the same keyboard folio case, otherwise its basically a ROM issue, rather than a Keyboard issue.
+
 ### Security and Privacy
 
 No keystrokes are logged. Authentication keys are not extracted or sent online. Authentication tokens are computed locally using the stock firmware's `devauth` trustlets.

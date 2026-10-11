@@ -42,19 +42,22 @@ Prerequisites:
 Installation Steps:
 
 1. Stage all required binaries and scripts to /data/local/tmp via ADB:
+```
 adb push midevauthd libmidevauth.so vendor.xiaomi.hardware.aidl.midevauth-V1-ndk_platform.so tokenhelper device/kbd_auth.sh device/kbd_leds.sh device/service.d-kbdauth.sh device/xiaomi_kbd_service.sh device/post-fs-data-kbd-idc.sh device/kbd_no_toucheventcheck.sh /data/local/tmp/
-
-2. Copy files to /data/adb/ and set proper execution permissions:
+```
+3. Copy files to /data/adb/ and set proper execution permissions:
+```
 adb shell su -c 'mkdir -p /data/adb/kbdauth /data/adb/service.d /data/adb/post-fs-data.d; cp /data/local/tmp/{midevauthd,libmidevauth.so,vendor.xiaomi.hardware.aidl.midevauth-V1-ndk_platform.so,tokenhelper,kbd_auth.sh,kbd_leds.sh} /data/adb/kbdauth/; cp /data/local/tmp/service.d-kbdauth.sh /data/adb/service.d/kbdauth.sh; cp /data/local/tmp/xiaomi_kbd_service.sh /data/adb/service.d/xiaomi_kbd_service.sh; cp /data/local/tmp/post-fs-data-kbd-idc.sh /data/adb/post-fs-data.d/kbd_idc.sh; cp /data/local/tmp/kbd_no_toucheventcheck.sh /data/adb/post-fs-data.d/kbd_no_toucheventcheck.sh; chmod 755 /data/adb/kbdauth/midevauthd /data/adb/kbdauth/tokenhelper /data/adb/kbdauth/kbd_auth.sh /data/adb/kbdauth/kbd_leds.sh /data/adb/service.d/kbdauth.sh /data/adb/service.d/xiaomi_kbd_service.sh /data/adb/post-fs-data.d/kbd_idc.sh /data/adb/post-fs-data.d/kbd_no_toucheventcheck.sh'
-
-3. Reboot your tablet.
+```
+5. Reboot your tablet.
 
 Verification:
 Execute the following to confirm all daemons are running correctly:
+```
 su -c 'cat /data/adb/kbd/svc.log'     # Checks daemon status (vnd=1)
 su -c 'cat /data/adb/kbd/auth.log'    # Expect: "-> STEP5 sent (real token)"
 su -c 'cat /data/adb/kbd/leds.log'    # Checks EVDEV discovery for caps/keys
-
+```
 ---
 
 ## Shortcuts & Configuration
@@ -95,9 +98,10 @@ GitHub Actions (.github/workflows/build.yml) cross-compiles it for arm64-v8a (ND
 ## Uninstalling
 
 Run the following commands in shell:
+```
 su -c 'rm /data/adb/service.d/kbdauth.sh /data/adb/service.d/xiaomi_kbd_service.sh /data/adb/post-fs-data.d/kbd_idc.sh /data/adb/post-fs-data.d/kbd_no_toucheventcheck.sh; rm -f /data/system/devices/idc/Vendor_15d9_Product_00a3.idc; pkill -f midevauthd; pkill -f kbd_auth.sh; pkill -f kbd_leds.sh; start toucheventcheck'
 # Optional: su -c 'rm -rf /data/adb/kbdauth'
-
+```
 ---
 
 ## Repository Information & License

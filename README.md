@@ -35,7 +35,7 @@ Use this method to install the fix through `/data/adb` boot scripts without inst
 
 - A Xiaomi Pad 7 or Pad 7 Pro running a custom ROM with stock HyperOS vendor blobs.
 - Root access through Magisk or KernelSU.
-- ADB enabled.
+- ADB Setup.
 - The following three proprietary HAL files extracted from the `odm.img` partition of a stock HyperOS fastboot ROM:
 
   ```text

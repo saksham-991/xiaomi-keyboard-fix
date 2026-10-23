@@ -251,6 +251,16 @@ adb reboot
 
 Version 2, which contains the authentication-only implementation, is archived on the [`v2-backup`](https://github.com/JohnnyFFM/xiaomi-keyboard-fix/tree/v2-backup) branch.
 
+## Related: touchpad feels laggy (30 Hz)
+
+Not fixed by this module (it's a display setting, not keyboard firmware) but
+the touchpad lives on the same keyboard folio, so noting it here: the folio
+**touchpad samples at ~30 Hz** while the panel reports 144 Hz, which makes the
+pointer feel choppy. **Workaround (user-confirmed):** Developer Options ->
+**Disable HW overlays** (forces GPU composition) fixes it completely. It's a
+per-boot toggle on a custom ROM; the proper fix belongs at the ROM/display-HAL
+level rather than in this module.
+
 ## License
 
 This project is licensed under the [MIT License](LICENSE).

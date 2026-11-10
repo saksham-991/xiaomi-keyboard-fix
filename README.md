@@ -10,7 +10,7 @@ Restores typing at boot, fixes landscape arrow key rotation, enables the Caps Lo
 2. Install the ZIP through Magisk or KernelSU.
 3. Reboot your tablet.
 
->Magisk Module is **not needed** to install, it is just for convenience, manual steps to write out all the commands are given below which essential do the exact same thing that this module does.
+>Magisk Module is **not needed** to install, it is just for convenience, manual steps to write out all the commands are given below which essentially do the exact same thing that this module does.
 
 ## Problems Solved
 
